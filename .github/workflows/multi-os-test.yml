@@ -1,0 +1,51 @@
+name: Multi-OS Testing - Manasi
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  test-ubuntu:
+    name: Test on Ubuntu
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Print OS Info
+        run: |
+          echo "Testing on Ubuntu..."
+          uname -a
+
+      - name: Create Ubuntu Test File
+        run: |
+          echo "Ubuntu test by Manasi" > test-ubuntu.txt
+
+      - name: Display File Contents
+        run: cat test-ubuntu.txt
+
+      - name: Completion Message
+        run: echo "Ubuntu tests completed"
+
+  test-windows:
+    name: Test on Windows
+    runs-on: windows-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Print OS Info
+        run: |
+          echo "Testing on Windows..."
+          systeminfo
+
+      - name: Create Windows Test File
+        run: |
+          echo "Windows test by Manasi" > test-windows.txt
+
+      - name: Display File Contents
+        run: type test-windows.txt
+
+      - name: Completion Message
+        run: echo "Windows tests completed"
